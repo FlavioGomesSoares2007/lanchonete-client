@@ -1,0 +1,32 @@
+:root {
+  --color1: #b7aea5;
+  --color2: #eb6b17;
+  --color3: #e33c08;
+  --color4: #706e6e;
+  --color5: #221d21;
+}
+.lanches-image {
+  width: 100%;
+  height: 300px;
+}
+nav {
+  display: flex;
+  gap: 20px;
+  background-color: white;
+  padding: 15px;
+  margin-top: -4px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--color5);
+  font-weight: bold;
+}
+
+nav a:hover {
+  border-bottom: 2px solid var(--color3);
+}
+
+
+
+
