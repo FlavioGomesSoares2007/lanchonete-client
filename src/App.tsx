@@ -1,24 +1,27 @@
-import './App.css'
-import { Routes, Route,  } from 'react-router-dom';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
 
-import { Logo } from './components/Logo';
-import { Navegacao } from './components/Navegacao';
-
-
+import { Cardapio } from "./pages/Cardapio";
+import { Pedidos } from "./pages/Pedidos";
+import { Perfil } from "./pages/Perfil";
+import { useState } from "react";
+import { Verificacao } from "./pages/Verificacao";
 function App() {
+  const [usuario] = useState<null | string>(null);
 
   return (
     <>
-      <Logo />
-      <Navegacao />
-      <Routes>
-        <Route path='/' element={ <h1>Home</h1> } />
-        <Route path='/pedidos' element={ <h1>Pedidos</h1> } />
-        <Route path='/perfil' element={ <h1>Perfil</h1> } />
-      </Routes>
-      
+      {usuario ? (
+        <Routes>
+          <Route path="/" element={<Cardapio />} />
+          <Route path="/pedidos" element={<Pedidos />} />
+          <Route path="/perfil" element={<Perfil />} />
+        </Routes>
+      ) : (
+        <Verificacao />
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
