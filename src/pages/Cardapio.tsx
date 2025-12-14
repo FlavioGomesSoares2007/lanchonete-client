@@ -1,6 +1,6 @@
 import { Logo } from "../components/Logo";
 import { Link } from "react-router-dom";
-import "./Navegacao.css";
+import "./style/Navegacao.css";
 
 export const Cardapio = () => {
   return (

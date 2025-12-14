@@ -6,6 +6,10 @@ import { Pedidos } from "./pages/Pedidos";
 import { Perfil } from "./pages/Perfil";
 import { useState } from "react";
 import { Verificacao } from "./pages/Verificacao";
+import { Login } from "./pages/Login";
+
+
+
 function App() {
   const [usuario] = useState<null | string>(null);
 
@@ -18,7 +22,10 @@ function App() {
           <Route path="/perfil" element={<Perfil />} />
         </Routes>
       ) : (
-        <Verificacao />
+        <Routes> 
+          <Route path="/" element={<Verificacao />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
       )}
     </>
   );
