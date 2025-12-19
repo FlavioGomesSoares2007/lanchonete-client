@@ -19,7 +19,7 @@ const procurar = async () => {
     const emailParaEnviar = "apolouhora666@gmail.com";
 
 
-    const resposta = await api.post("/api/dados/buscar", { 
+    const resposta = await api.post("/dados/buscar", { 
       email: emailParaEnviar 
     });
 
