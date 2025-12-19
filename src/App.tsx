@@ -1,9 +1,8 @@
 import "./App.css";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 import { Cardapio } from "./pages/Cardapio";
-import { Pedidos } from "./pages/Pedidos";
 import { Perfil } from "./pages/Perfil";
 import { Login } from "./pages/Login";
 import { Contato } from "./pages/Contato";
@@ -20,9 +19,7 @@ function App() {
       {usuarioLogado ? (
         <>
           <Route path="/" element={<Cardapio />} />
-          <Route path="/pedidos" element={<Pedidos />} />
           <Route path="/perfil" element={<Perfil />} />
-          <Route path="*" element={<Navigate to="/" />} />
         </>
       ) : (
         <>
@@ -30,7 +27,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/cadastro/contato/:id" element={<Contato />} />
-          <Route path="*" element={<Navigate to="/login" />} />
         </>
       )}
     </Routes>

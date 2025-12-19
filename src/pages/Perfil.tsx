@@ -1,53 +1,37 @@
 import { Logo } from "../components/Logo";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./style/Navegacao.css";
-import { api } from "../services/api";
-
+import { RiUserFill } from "react-icons/ri";
+import { exit } from "../services/exit";
 
 export const Perfil = () => {
-  
-const navigate = useNavigate();
+  const nome = localStorage.getItem("nome");
+  const sobre_nome = localStorage.getItem("sobre_nome");
 
-const sair = () => {
-  localStorage.removeItem("email");
-  navigate("/");
-  window.location.reload();
-}
+  const sair = exit();
 
-const procurar = async () => {
-  try {
-    const emailParaEnviar = "apolouhora666@gmail.com";
-
-
-    const resposta = await api.post("/dados/buscar", { 
-      email: emailParaEnviar 
-    });
-
-    console.log("O que chegou do Back:", resposta.data); 
-
-  } catch (error) {
-    console.error("Deu erro na busca:", error);
-  }
-}
   return (
     <>
       <Logo />
       <nav>
         <Link to="/">Cardapio</Link>
-        <Link  to="/pedidos">Pedidos</Link>
-        <Link className="ativo" to="/perfil">Perfil </Link>
+        <Link className="ativo" to="/perfil">
+          Perfil
+        </Link>
       </nav>
 
       <div>
-        <h1>Perfil</h1>
-        <button onClick={sair}>
-          <h2>sair</h2>
-        </button>
-        <button onClick={procurar}> 
-          <h2>procurar</h2>
-        </button>
+        <h1>
+          {nome} {sobre_nome}
+        </h1>
+        <div>
+          <RiUserFill />
+          <Link to="/perfil/editar">edite o nome</Link>
+        </div>
+        <div>
+          <button onClick={sair}>Sair</button>
+        </div>
       </div>
-
     </>
   );
 };
