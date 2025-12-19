@@ -1,81 +1,88 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import { FaUser, FaLock, FaIdCard } from "react-icons/fa";
+import { FaLock, FaEnvelope } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { api } from "../services/api";
 
-// Seu import atualizado (lembre de renomear o arquivo para Login.css)
-import "./style/Login.css"; 
+import "./style/Login.css";
 
-interface Userdata {
-  nome: string;
-  sobrenome: string;
-  password: string;
+interface UserLoginData {
+  email: string;
+  senha: string;
 }
 
 export const Login = () => {
-  const [formData, setFormData] = useState<Userdata>({
-    nome: '',
-    sobrenome: '',
-    password: ''
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [formData, setFormData] = useState<UserLoginData>({
+    email: "",
+    senha: "",
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("Enviando:", formData);
+    setIsLoading(true);
+
+    try {
+      await api.post("/auth/login", formData);
+      localStorage.setItem("email", formData.email);
+
+      navigate("/");
+      window.location.reload();
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      alert("Email ou senha incorretos!");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    // Agora usamos strings normais: "container" em vez de {styles.container}
     <div className="container">
       <form onSubmit={handleSubmit} className="form">
-        <h2 className="title">Acessar Conta</h2>
-        
-        {/* Nome */}
+        <h1>Acessar Conta</h1>
+
         <div className="inputWrapper">
-          <FaUser className="icon" />
-          <input 
-            type="text" 
-            placeholder="Seu Nome"
-            name="nome" 
-            value={formData.nome} 
+          <FaEnvelope className="icon" />
+          <input
+            type="email"
+            placeholder="Seu E-mail"
+            name="email"
+            value={formData.email}
             onChange={handleChange}
             className="inputField"
+            required
           />
         </div>
 
-        {/* Sobrenome */}
-        <div className="inputWrapper">
-          <FaIdCard className="icon" />
-          <input 
-            type="text" 
-            placeholder="Seu Sobrenome"
-            name="sobrenome"
-            value={formData.sobrenome}
-            onChange={handleChange}
-            className="inputField"
-          />
-        </div>
-
-        {/* Senha */}
         <div className="inputWrapper">
           <FaLock className="icon" />
-          <input 
-            type="password" 
+          <input
+            type="password"
             placeholder="Sua Senha"
-            name="password"
-            value={formData.password}
+            name="senha"
+            value={formData.senha}
             onChange={handleChange}
             className="inputField"
+            required
           />
         </div>
 
-        <button type="submit" className="button">Entrar</button>
+        <button type="submit" className="button" disabled={isLoading}>
+          {isLoading ? "Entrando..." : "Entrar"}
+        </button>
+
+        <div className="registerLink">
+          <span>Não tem conta? </span>
+          <Link to="/cadastro" className="linkCastre-se">
+            Cadastre-se
+          </Link>
+        </div>
       </form>
     </div>
   );

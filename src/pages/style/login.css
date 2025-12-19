@@ -1,49 +1,76 @@
-/* Login.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+  --color1: #b7aea5; 
+  --color2: #eb6b17; 
+  --color3: #e33c08;
+  --color4: #706e6e; 
+  --color5: #221d21; 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f0f2f5;
+}
+
+
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f2f5;
-  font-family: Arial, sans-serif;
+  width: 100%;
 }
 
 .form {
   background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: 350px;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px; 
 }
 
 .title {
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+  margin-bottom: 30px;
+  color: var(--color5);
+  font-size: 24px;
+}
+.registerLink{
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: var(--color4);
 }
 
-/* O truque da div que finge ser input */
 .inputWrapper {
   display: flex;
   align-items: center;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 15px;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
   background-color: #fff;
-  transition: border-color 0.2s;
+  transition: border-color 0.3s;
 }
 
-/* Efeito bonitinho: quando passar o mouse, a borda fica azul */
-.inputWrapper:hover {
-  border-color: #007BFF;
+.inputWrapper:focus-within {
+  border-color: var(--color2); 
 }
 
 .icon {
-  color: #666;
-  margin-right: 10px;
+  color: var(--color4);
+  margin-right: 8px; 
   font-size: 18px;
+  min-width: 20px;
 }
 
 .inputField {
@@ -51,24 +78,26 @@
   outline: none;
   width: 100%;
   font-size: 16px;
-  color: #333;
+  color: var(--color5);
   background: transparent;
 }
 
 .button {
   width: 100%;
-  padding: 12px;
-  background-color: #007BFF;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--color2), var(--color3));
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
-  font-weight: bold;
-  transition: background-color 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(235, 107, 23, 0.3);
 }
 
 .button:hover {
-  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(235, 107, 23, 0.5);
 }
