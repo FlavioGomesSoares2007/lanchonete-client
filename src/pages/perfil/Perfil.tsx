@@ -8,29 +8,33 @@ import {
   FaKey,
   FaSignOutAlt,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Perfil.css";
 import api from "../../services/api";
 import { useEffect, useState } from "react";
+import { buscarDados } from "../../Hooks/BuscarDados";
 
 
 export const Perfil = () => {
   
 const [nome, setNome] = useState<string>("");
 
+const navegar = useNavigate()
+
 useEffect(() => {
-  const buscarDados = async () => {
-    const token = localStorage.getItem('token')
-    const response = await api.get("/clientes",{
-      headers:{
-        Authorization: `Bearer ${token}`
-      }
-    });
-    setNome(response.data.nome);
+  const Dados = async () => {
+    const response = await buscarDados("/clientes")
+ 
+    setNome(response.nome);
   };
-  buscarDados()
+  Dados()
 }, []);
+
+const exit = ()=>{
+  localStorage.clear()
+  navegar("/")
+}
   return (
     <>
       <div id="configuracao">
@@ -38,7 +42,7 @@ useEffect(() => {
           <p>olá, {nome===""? "carregando...": nome}</p>
           <p className="cod">cod: xxxxxx</p>
         </div>
-        <Link className="conficuracos" to={"/perfi"}>
+        <Link className="conficuracos" to={"/editar/perfil"}>
           <FaUserEdit size={18} />
           Editar Perfil
         </Link>
@@ -54,7 +58,7 @@ useEffect(() => {
           <FaKey size={18} />
           Editar Codigo
         </Link>
-        <button className="exit">
+        <button onClick={exit} className="exit">
           Sair
           <FaSignOutAlt size={18} />
         </button>

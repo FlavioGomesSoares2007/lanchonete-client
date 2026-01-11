@@ -5,11 +5,13 @@ import api from "../../services/api";
 export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true)
 
   const navigater = useNavigate();
 
   const fazerLogin = async (e: any) => {
     e.preventDefault();
+    setLoading(false)
     try {
       const response = await api.post("auth/login", {
         email: email,
@@ -22,6 +24,8 @@ export const Login = () => {
       }
     } catch (error) {
       console.log(`tivemos algum erro na busca do perfil ${error}`);
+    }finally{
+      setLoading(true)
     }
   };
 
@@ -48,7 +52,7 @@ export const Login = () => {
               />
             </div>
 
-            <button type="submit">Login</button>
+            <button type="submit">{loading? "Login": "carregando..."}</button>
             <p className="caractere">
               Ainda não possui conta? <Link to="/cadastrar">Cadastre-se</Link>
             </p>
