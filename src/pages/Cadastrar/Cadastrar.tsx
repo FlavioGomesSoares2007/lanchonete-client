@@ -8,26 +8,26 @@ export const Cadastrar = () => {
   const [senha, setSenha] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [telefone, setTelefone] = useState<string>("");
-  const [carregar, setCarregar] = useState<boolean>(true)
+  const [carregar, setCarregar] = useState<boolean>(true);
 
-  const navegar = useNavigate()
+  const navegar = useNavigate();
 
   const enviarDados = async (e: any) => {
     e.preventDefault();
-    setCarregar(false)
+    setCarregar(false);
     try {
       const response = await api.post("clientes", {
         nome: nome,
         sobre_nome: sobreNome,
         senha: senha,
         telefone: telefone,
-        email: email
+        email: email,
       });
-      navegar('/')
+      navegar("/");
     } catch (error) {
       console.log(`o erro foi ${error}`);
-    }finally{
-      setCarregar(true)
+    } finally {
+      setCarregar(true);
     }
   };
   return (
@@ -82,10 +82,11 @@ export const Cadastrar = () => {
               />
             </div>
 
-            <button type="submit">{carregar? 'Enviar':'carregando...' }</button>
-            <p>Ja tenho um cadastro, </p>
+            <button type="submit">
+              {carregar ? "Enviar" : "carregando..."}
+            </button>
             <p>
-              <Link to="/">login</Link>
+              voltar para o <Link to="/">login</Link>{" "}
             </p>
           </form>
         </div>

@@ -1,15 +1,9 @@
-
-body {
-  font-family: "Roboto", sans-serif;
-  margin: 0px;
-}
+@import url("../style.css");
 .titulo-cadastra {
   text-align: center;
   margin-top: 50px;
   font-size: 35px;
 }
-
-
 .fundo_cadastrar {
   display: flex;
   background-image: url("../../assets/fundo-cadastrar.png");
@@ -32,27 +26,6 @@ body {
   height: 600px;
   justify-content: center;
 }
-.inputBoxSobre {
-  display: flex;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  height: 35px;
-  width: 200px;
-  margin: 20px;
-}
-.inputBoxSobre input {
-  border: none;
-  outline: none;
-  background: transparent;
-  width: 110px;
-  border-radius: 10px;
-}
-.inputBoxSobre label {
-  color: #333;
-  font-size: 14px;
-  margin: auto;
-   margin-left: 5px;
-}
 
 #conteiner-cadastra button { 
   border: none;
@@ -64,5 +37,13 @@ body {
   cursor: pointer;
   margin-left: 70px;
 }
+#conteiner-cadastra a{
+  color: #ff3434;
+  text-decoration: none;
+}
+#conteiner-cadastra p{
+  text-align: center;
+}
+
 
 
