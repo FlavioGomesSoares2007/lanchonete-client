@@ -11,50 +11,49 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 
 import "./Perfil.css";
-import api from "../../services/api";
 import { useEffect, useState } from "react";
-import { buscarDados } from "../../Hooks/BuscarDados";
-
+import { buscarDados } from "../../Hooks/buscarDados";
 
 export const Perfil = () => {
-  
-const [nome, setNome] = useState<string>("");
+  const [nome, setNome] = useState<string>("");
+  const [codigo, setCodigo] = useState<string>("");
 
-const navegar = useNavigate()
+  const navegar = useNavigate();
 
-useEffect(() => {
-  const Dados = async () => {
-    const response = await buscarDados("/clientes")
- 
-    setNome(response.nome);
+  useEffect(() => {
+    const Dados = async () => {
+      const response = await buscarDados("/clientes");
+
+      setNome(response.nome);
+      setCodigo(response.codigo);
+    };
+    Dados();
+  }, []);
+
+  const exit = () => {
+    localStorage.clear();
+    navegar("/");
   };
-  Dados()
-}, []);
-
-const exit = ()=>{
-  localStorage.clear()
-  navegar("/")
-}
   return (
     <>
       <div id="configuracao">
         <div className="cabecalho">
-          <p>olá, {nome===""? "carregando...": nome}</p>
-          <p className="cod">cod: xxxxxx</p>
+          <p>olá, {nome === "" ? "carregando..." : nome}</p>
+          <p className="cod">cod: {codigo === "" ? "carregando..." : codigo}</p>
         </div>
         <Link className="conficuracos" to={"/editar/perfil"}>
           <FaUserEdit size={18} />
           Editar Perfil
         </Link>
-        <Link className="conficuracos" to={"/perfi"}>
+        <Link className="conficuracos" to={"/editar/contato"}>
           <FaAddressBook size={18} />
           Editar Contato
         </Link>
-        <Link className="conficuracos" to={"/perfi"}>
+        <Link className="conficuracos" to={"/editar/codigo"}>
           <FaMapMarkerAlt size={18} />
           Cadastrar Endereços
         </Link>
-        <Link className="conficuracos" to={"/perfi"}>
+        <Link className="conficuracos" to={"/editar/codigo"}>
           <FaKey size={18} />
           Editar Codigo
         </Link>

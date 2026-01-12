@@ -7,9 +7,8 @@ import { FaUserLarge } from "react-icons/fa6";
 import api from "../../../services/api";
 import { buscarDados } from "../../../Hooks/buscarDados";
 
-export const EditarPerfil = () => {
-  const [nome, setNome] = useState<string>("");
-  const [sobreNome, setSobreNome] = useState<string>("");
+export const EditarCodigo = () => {
+  const [codigo, setCodigo] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
   const navegar = useNavigate();
@@ -18,8 +17,7 @@ export const EditarPerfil = () => {
     const Dados = async () => {
       const response = await buscarDados("/clientes");
 
-      setNome(response.nome);
-      setSobreNome(response.sobre_nome);
+      setCodigo(response.codigo);
       console.log(response);
     };
     Dados();
@@ -33,8 +31,7 @@ export const EditarPerfil = () => {
       await api.patch(
         "clientes/update",
         {
-          nome: nome,
-          sobre_nome: sobreNome,
+          codigo: codigo
         },
         {
           headers: {
@@ -53,28 +50,17 @@ export const EditarPerfil = () => {
     <>
       <div id="conteiner_editar">
         <div className="cabecalho">
-          <h2 className="tituloEditar">Nome e sobre Nome</h2>
+          <h2 className="tituloCodigo">Codigo</h2>
         </div>
         <form onSubmit={AtualizarDados}>
           <div className="inputBox">
-            <label htmlFor="Nome">Nome:</label>
+            <label htmlFor="Nome">Codigo:</label>
             <input
               type="text"
               id="Nome"
-              value={nome}
+              value={codigo}
               onChange={(e) => {
-                setNome(e.target.value);
-              }}
-            />
-          </div>
-          <div className="inputBox_sobre">
-            <label htmlFor="SobreNome">Sobre Nome:</label>
-            <input
-              type="text"
-              id="SobreNome"
-              value={sobreNome}
-              onChange={(e) => {
-                setSobreNome(e.target.value);
+                setCodigo(e.target.value);
               }}
             />
           </div>

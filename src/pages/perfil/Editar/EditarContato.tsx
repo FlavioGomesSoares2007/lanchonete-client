@@ -7,9 +7,9 @@ import { FaUserLarge } from "react-icons/fa6";
 import api from "../../../services/api";
 import { buscarDados } from "../../../Hooks/buscarDados";
 
-export const EditarPerfil = () => {
-  const [nome, setNome] = useState<string>("");
-  const [sobreNome, setSobreNome] = useState<string>("");
+export const EditarContato = () => {
+  const [email, setEmail] = useState<string>("");
+  const [tel, setTel] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
   const navegar = useNavigate();
@@ -18,8 +18,8 @@ export const EditarPerfil = () => {
     const Dados = async () => {
       const response = await buscarDados("/clientes");
 
-      setNome(response.nome);
-      setSobreNome(response.sobre_nome);
+      setEmail(response.contato.email);
+      setTel(response.contato.telefone);
       console.log(response);
     };
     Dados();
@@ -33,8 +33,10 @@ export const EditarPerfil = () => {
       await api.patch(
         "clientes/update",
         {
-          nome: nome,
-          sobre_nome: sobreNome,
+          contato: {
+            email: email,
+            telefone: tel,
+          },
         },
         {
           headers: {
@@ -57,24 +59,24 @@ export const EditarPerfil = () => {
         </div>
         <form onSubmit={AtualizarDados}>
           <div className="inputBox">
-            <label htmlFor="Nome">Nome:</label>
+            <label htmlFor="Nome">Email:</label>
             <input
               type="text"
               id="Nome"
-              value={nome}
+              value={email}
               onChange={(e) => {
-                setNome(e.target.value);
+                setEmail(e.target.value);
               }}
             />
           </div>
           <div className="inputBox_sobre">
-            <label htmlFor="SobreNome">Sobre Nome:</label>
+            <label htmlFor="SobreNome">Telefone:</label>
             <input
               type="text"
               id="SobreNome"
-              value={sobreNome}
+              value={tel}
               onChange={(e) => {
-                setSobreNome(e.target.value);
+                setTel(e.target.value);
               }}
             />
           </div>
