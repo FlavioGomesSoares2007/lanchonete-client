@@ -49,7 +49,7 @@ export const Perfil = () => {
           <FaAddressBook size={18} />
           Editar Contato
         </Link>
-        <Link className="conficuracos" to={"/editar/codigo"}>
+        <Link className="conficuracos" to={"/meusEnderecos"}>
           <FaMapMarkerAlt size={18} />
           Cadastrar Endereços
         </Link>

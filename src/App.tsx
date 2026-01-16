@@ -6,6 +6,7 @@ import { Perfil } from "./pages/perfil/Perfil";
 import { EditarPerfil } from "./pages/perfil/Editar/EditarPerfil";
 import { EditarContato } from "./pages/perfil/Editar/EditarContato";
 import { EditarCodigo } from "./pages/perfil/Editar/EditarCodigo";
+import { MeusEnderecos } from "./pages/perfil/Enderecos/MeusEnderecos";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/editar/perfil" element={<EditarPerfil />}/>
       <Route path="/editar/contato" element={<EditarContato />}/>
       <Route path="/editar/codigo" element={<EditarCodigo />}/>
+      <Route path="/meusEnderecos" element={<MeusEnderecos />}/>
     </Routes>
   );
 }
