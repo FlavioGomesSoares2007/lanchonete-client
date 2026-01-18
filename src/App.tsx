@@ -9,6 +9,7 @@ import { EditarCodigo } from "./pages/perfil/Editar/EditarCodigo";
 import { MeusEnderecos } from "./pages/perfil/Enderecos/MeusEnderecos";
 import { CadastraEndereco } from "./pages/perfil/Enderecos/CadastraEndereco";
 import { Administrativo } from "./pages/Adm/Administrativo";
+import { Categoria } from "./pages/Adm/Categoria/Categoria";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path="/meusEnderecos" element={<MeusEnderecos />} />
       <Route path="/cadastraEndereco" element={<CadastraEndereco />} />
       <Route path="/adm" element={<Administrativo />} />
+      <Route path="/cadastrarCategoria" element={<Categoria/>} />
     </Routes>
   );
 }

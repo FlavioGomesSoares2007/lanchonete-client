@@ -1,0 +1,21 @@
+#conteinerCatecoria{
+    margin: auto;
+    margin-top: 30px;
+    background-color: #d5d5d5;
+    width: 300px;
+    height: 500px;
+    border-radius: 30px;
+}
+#cabecalhoCategoria{
+    background-color:#aeaeae ;
+    height: 70px;
+    width: 100%;
+    border-radius: 20px 20px 0px 0px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#categorias{
+    background-color: #e4e3e3;
+    height: 360px;
+}

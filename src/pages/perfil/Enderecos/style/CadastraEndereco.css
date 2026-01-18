@@ -19,3 +19,25 @@
   margin-left: 70px;
   margin-bottom: 10px;
 }
+
+.inputBoxEndereco {
+  display: flex;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  height: 35px;
+  width: 200px;
+  margin: 20px;
+}
+.inputBoxEndereco input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100px;
+  border-radius: 10px;
+}
+.inputBoxEndereco label {
+  margin-left: 10px;
+  color: #333;
+  font-size: 14px;
+  margin: auto;
+}

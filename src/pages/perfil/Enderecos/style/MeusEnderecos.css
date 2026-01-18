@@ -1,7 +1,7 @@
-#conteinerAdm {
+#conteinerEnderecos {
   margin: auto;
   margin-top: 30px;
-  background-color: #d5d5d5; /* Mesmo cinza do fundo */
+  background-color: #d5d5d5;
   width: 300px;
   height: 480px;
   border-radius: 15px;
@@ -11,47 +11,69 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Criei um cabeçalho igual ao do Endereço para ficar padrão */
-.cabecalhoAdm {
+.cabecalhoEnderecos {
   background-color: #aeaeae;
   height: 80px;
   width: 100%;
   border-radius: 15px 15px 0 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px; /* Espaço para separar dos botões */
+  padding-right: 5px;
+  box-sizing: border-box;
+}
+#enderecos {
+  background-color: #e4e3e3;
+  height: 330px; 
+  width: 100%;
+  overflow-y: auto; 
+}
+#enderecos::-webkit-scrollbar {
+  display: none;
 }
 
-.cabecalhoAdm h2 {
-    color: #333;
-    font-size: 20px;
-    margin: 0;
+.cartaoEnderecos {
+  background-color: #cac9c9;
+  border-radius: 20px;
+  width: 95%;
+  margin: auto;
+  margin-top: 5px;
 }
-
-/* O estilo dos botões (Links) */
-.conficuracos {
-  background-color: white; /* Botão branco igual ao "Cadastrar Endereço" */
-  width: 85%; /* Um pouco menos que a largura total */
-  height: 50px; /* Altura boa para clicar no celular */
-  border-radius: 50px; /* Bem redondo */
-  
-  display: flex;
-  justify-content: center; /* Centraliza o texto */
-  align-items: center;
-  
-  text-decoration: none; /* Tira o sublinhado do link */
+.cartaoEnderecos p {
+  color: #333;
+  margin: 0;
+  margin-left: 10px;
+  margin-bottom: 3px;
+  font-size: 15px;
+}
+#apagar {
+  width: 80px;
+  height: 24px;
+  background-color: #FF3232;
+  border-radius: 50px;
   color: #333;
   font-weight: bold;
-  font-size: 16px;
-  
-  margin-bottom: 15px; /* Espaço entre um botão e outro */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Uma sombrinha leve */
-  transition: transform 0.2s;
+  border: none;
+  margin-bottom: 5px;
+  padding-bottom: 0px;
+  margin-left: 195px;
+  cursor: pointer;
 }
+.CadastraEndereco {
+  width: 100px;
+  height: 30px;
+  background-color: white;
+  border-radius: 50px;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
 
-/* Efeito simples quando clica */
-.conficuracos:active {
-    transform: scale(0.95);
-    background-color: #f0f0f0;
+  align-self: flex-start;
+  margin-left: 15px;
+  margin-top: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

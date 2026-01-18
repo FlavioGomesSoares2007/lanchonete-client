@@ -4,13 +4,11 @@ import "./Administrativo.css";
 export const Administrativo = () => {
   return (
     <>
-      {/* 1. O AVISO (Só aparece no celular) */}
       <div className="aviso-mobile">
         <h1> Acesso Bloqueado</h1>
-        <p>O Painel Administrativo só pode ser acessado pelo Computador.</p>
+        <p>O Painel Administrativo só pode ser acessado pelo Computador ou com a tela cheia.</p>
       </div>
 
-      {/* 2. O PAINEL (Só aparece no PC) */}
       <div id="conteinerAdm">
         <div className="cabecalhoAdm">
           <h1>Painel do Gerente</h1>
