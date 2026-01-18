@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import "./MeusEnderecos.css";
+import "./style/MeusEnderecos.css";
 import { AiFillHome, AiOutlineShoppingCart } from "react-icons/ai";
 import { FaUserLarge } from "react-icons/fa6";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import { buscarDados } from "../../../Hooks/buscarDados";
+import api from "../../../services/api";
 
 export const MeusEnderecos = () => {
   const [enderecos, setEnderecos] = useState<[]>([]);
@@ -27,6 +28,21 @@ export const MeusEnderecos = () => {
     };
     Dados();
   }, []);
+
+  const apagar = async (id_endereco: string) => {
+    const token = localStorage.getItem("token");
+    try {
+      await api.delete("clientes/endereco", {
+        data: { id_endereco: id_endereco },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      window.location.reload();
+    } catch (error) {
+      console.log(`error ao deletar ${error}`);
+    }
+  };
   return (
     <>
       <div id="conteinerEnderecos">
@@ -36,11 +52,19 @@ export const MeusEnderecos = () => {
         <div id="enderecos">
           {enderecos.map((dados: any) => (
             <div key={dados.id_endereco} className="cartaoEnderecos">
-              <p><strong>Rua:</strong> {dados.logradouro}</p>
-              <p><strong>Numero:</strong> {dados.numero}</p>
-              <p><strong>Bairro:</strong> {dados.bairro}</p>
-              <Link id="Atualizar" to={"/atualizar"}>Atualizar</Link>
-              <button  id="apagar">Apagar</button>
+              <p>
+                <strong>Rua:</strong> {dados.logradouro}
+              </p>
+              <p>
+                <strong>Numero:</strong> {dados.numero}
+              </p>
+              <p>
+                <strong>Bairro:</strong> {dados.bairro}
+              </p>
+           
+              <button onClick={() => apagar(dados.id_endereco)} id="apagar">
+                Apagar
+              </button>
             </div>
           ))}
         </div>

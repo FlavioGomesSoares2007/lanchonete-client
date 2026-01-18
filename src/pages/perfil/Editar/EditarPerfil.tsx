@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Editar.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { AiFillHome, AiOutlineShoppingCart } from "react-icons/ai";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { FaUserLarge } from "react-icons/fa6";
@@ -25,7 +25,7 @@ export const EditarPerfil = () => {
     Dados();
   }, []);
 
-  const AtualizarDados = async (e: any) => {
+  const AtualizarDados = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
@@ -62,7 +62,7 @@ export const EditarPerfil = () => {
               type="text"
               id="Nome"
               value={nome}
-              onChange={(e) => {
+              onChange={(e:React.ChangeEvent<HTMLInputElement>) => {
                 setNome(e.target.value);
               }}
             />
@@ -73,7 +73,7 @@ export const EditarPerfil = () => {
               type="text"
               id="SobreNome"
               value={sobreNome}
-              onChange={(e) => {
+              onChange={(e:React.ChangeEvent<HTMLInputElement>) => {
                 setSobreNome(e.target.value);
               }}
             />

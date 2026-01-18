@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Editar.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { AiFillHome, AiOutlineShoppingCart } from "react-icons/ai";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { FaUserLarge } from "react-icons/fa6";
@@ -23,7 +23,7 @@ export const EditarCodigo = () => {
     Dados();
   }, []);
 
-  const AtualizarDados = async (e: any) => {
+  const AtualizarDados = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
@@ -59,7 +59,7 @@ export const EditarCodigo = () => {
               type="text"
               id="Nome"
               value={codigo}
-              onChange={(e) => {
+              onChange={(e:React.ChangeEvent<HTMLInputElement>) => {
                 setCodigo(e.target.value);
               }}
             />

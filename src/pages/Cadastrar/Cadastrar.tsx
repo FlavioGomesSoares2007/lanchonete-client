@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Cadastrar.css";
-import { useState } from "react";
+import React, { useState, type FormEvent } from "react";
 import api from "../../services/api";
 export const Cadastrar = () => {
   const [nome, setNome] = useState<string>("");
@@ -12,8 +12,8 @@ export const Cadastrar = () => {
 
   const navegar = useNavigate();
 
-  const enviarDados = async (e: any) => {
-    e.preventDefault();
+  const enviarDados = async (e: FormEvent) => {
+    e.preventDefault
     setCarregar(false);
     try {
       const response = await api.post("clientes", {
@@ -40,7 +40,7 @@ export const Cadastrar = () => {
               <input
                 type="text"
                 placeholder="Nome"
-                onChange={(e) => {
+                onChange={(e:React.ChangeEvent<HTMLInputElement>) => {
                   setNome(e.target.value);
                 }}
               />
@@ -49,7 +49,7 @@ export const Cadastrar = () => {
               <input
                 type="text"
                 placeholder="Sobre Nome"
-                onChange={(e) => {
+                onChange={(e:React.ChangeEvent<HTMLInputElement>) => {
                   setSobreNome(e.target.value);
                 }}
               />
@@ -58,7 +58,7 @@ export const Cadastrar = () => {
               <input
                 type="text"
                 placeholder="Senhar"
-                onChange={(e) => {
+                onChange={(e:React.ChangeEvent<HTMLInputElement>) => {
                   setSenha(e.target.value);
                 }}
               />
@@ -67,7 +67,7 @@ export const Cadastrar = () => {
               <input
                 type="email"
                 placeholder="Email"
-                onChange={(e) => {
+                onChange={(e:React.ChangeEvent<HTMLInputElement>) => {
                   setEmail(e.target.value);
                 }}
               />
@@ -76,7 +76,7 @@ export const Cadastrar = () => {
               <input
                 type="tel"
                 placeholder="telefone: (xx) xxxxx-xxxx"
-                onChange={(e) => {
+                onChange={(e:React.ChangeEvent<HTMLInputElement>) => {
                   setTelefone(e.target.value);
                 }}
               />
