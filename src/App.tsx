@@ -24,7 +24,7 @@ function App() {
       <Route path="/meusEnderecos" element={<MeusEnderecos />} />
       <Route path="/cadastraEndereco" element={<CadastraEndereco />} />
       <Route path="/adm" element={<Administrativo />} />
-      <Route path="/cadastrarCategoria" element={<Categoria/>} />
+      <Route path="/categorias" element={<Categoria/>} />
     </Routes>
   );
 }

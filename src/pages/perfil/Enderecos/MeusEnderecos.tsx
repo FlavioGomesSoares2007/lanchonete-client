@@ -62,13 +62,13 @@ export const MeusEnderecos = () => {
                 <strong>Bairro:</strong> {dados.bairro}
               </p>
            
-              <button onClick={() => apagar(dados.id_endereco)} id="apagar">
+              <button onClick={() => apagar(dados.id_endereco)} className="apagar">
                 Apagar
               </button>
             </div>
           ))}
         </div>
-        <Link className="CadastraEndereco" to={"/cadastraEndereco"}>
+        <Link className="cadastra" to={"/cadastraEndereco"}>
           cadastrar
         </Link>
       </div>

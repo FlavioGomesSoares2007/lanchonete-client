@@ -19,7 +19,7 @@ export const Administrativo = () => {
              Gerenciar Ingredientes
           </Link>
 
-          <Link className="botaoAdm" to={"/cadastrarCategoria"}>
+          <Link className="botaoAdm" to={"/categorias"}>
              Nova Categoria
           </Link>
 
