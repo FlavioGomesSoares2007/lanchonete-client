@@ -22,6 +22,19 @@ export const Categoria = () => {
     dados();
   }, []);
 
+  const apagar = async (id: number) => {
+    try {
+       await api.delete("categoria", {
+        data: {
+          id: id,
+        },
+      });
+      window.location.reload();
+    } catch (error) {
+      console.log(`error ao apagar a categoria ${error}`);
+    }
+  };
+
   return (
     <>
       <div id="conteinerCatecoria">
@@ -33,17 +46,25 @@ export const Categoria = () => {
             <div key={dados.id_categoria} className="cartaoCategoria">
               {" "}
               <img src={dados.imagem} alt="mini foto da categoria" />{" "}
-              <p><strong>{dados.nome}</strong></p>
-              <button className="apagarCategoria">Excluir</button>
+              <p>
+                <strong>{dados.nome}</strong>
+              </p>
+              <button
+                onClick={() => {
+                  apagar(dados.id_categoria);
+                }}
+                className="apagarCategoria"
+              >
+                Excluir
+              </button>
             </div>
           ))}
         </div>
         <div className="divCadastar">
-          <Link className="cadastra" to={"cadastrarCategorias"}>
-          Cadastrar
-        </Link>
+          <Link className="cadastra" to={"/cadastrarCategorias"}>
+            Cadastrar
+          </Link>
         </div>
-        
       </div>
     </>
   );
