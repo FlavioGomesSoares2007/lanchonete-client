@@ -29,7 +29,7 @@ export const Categoria = () => {
           id: id,
         },
       });
-      window.location.reload();
+      window.location.reload(); 
     } catch (error) {
       console.log(`error ao apagar a categoria ${error}`);
     }
@@ -61,7 +61,7 @@ export const Categoria = () => {
           ))}
         </div>
         <div className="divCadastar">
-          <Link className="cadastra" to={"/cadastrarCategorias"}>
+          <Link className="cadastra" to={"/cadastrar/categorias"}>
             Cadastrar
           </Link>
         </div>

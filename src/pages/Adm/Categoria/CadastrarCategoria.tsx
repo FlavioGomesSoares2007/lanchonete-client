@@ -64,7 +64,9 @@ export const CadastrarCategoria = () => {
             {previa ? (
               <img src={previa} alt="foto escolhida" />
             ) : (
-              <p><strong>sem foto</strong></p>
+              <p>
+                <strong>sem foto</strong>
+              </p>
             )}
           </div>
         </div>

@@ -61,8 +61,11 @@ export const MeusEnderecos = () => {
               <p>
                 <strong>Bairro:</strong> {dados.bairro}
               </p>
-           
-              <button onClick={() => apagar(dados.id_endereco)} className="apagar">
+
+              <button
+                onClick={() => apagar(dados.id_endereco)}
+                className="apagar"
+              >
                 Apagar
               </button>
             </div>

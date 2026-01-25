@@ -11,6 +11,9 @@ import { CadastraEndereco } from "./pages/perfil/Enderecos/CadastraEndereco";
 import { Administrativo } from "./pages/Adm/Administrativo";
 import { Categoria } from "./pages/Adm/Categoria/Categoria";
 import { CadastrarCategoria } from "./pages/Adm/Categoria/CadastrarCategoria";
+import { Ingrediente } from "./pages/Adm/Ingrediente/Ingrediente";
+import { CadastrarIngrediente } from "./pages/Adm/Ingrediente/CadastrarIngrediente";
+import { UpdateIngrediente } from "./pages/Adm/Ingrediente/UpdateIngrediente";
 
 function App() {
   return (
@@ -25,8 +28,12 @@ function App() {
       <Route path="/meusEnderecos" element={<MeusEnderecos />} />
       <Route path="/cadastraEndereco" element={<CadastraEndereco />} />
       <Route path="/adm" element={<Administrativo />} />
-      <Route path="/categorias" element={<Categoria/>} />
-      <Route path="/cadastrarCategorias" element={<CadastrarCategoria/>} />
+      <Route path="/categorias" element={<Categoria />} />
+      <Route path="/cadastrar/categorias" element={<CadastrarCategoria />} />
+      <Route path="/ingredientes" element={<Ingrediente />} />
+      <Route path="/cadastrar/ingredientes/" element={<CadastrarIngrediente />} />
+      <Route path="/atualizar/ingrediente/:id" element={<UpdateIngrediente />} />
+
     </Routes>
   );
 }
